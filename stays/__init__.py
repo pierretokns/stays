@@ -32,9 +32,11 @@ from stays.models.google_hotels.policy import (
     CancellationPolicyKind,
 )
 from stays.models.google_hotels.result import (
+    AmenityFlag,
     CategoryRating,
     HotelResult,
     NearbyPlace,
+    NearbyTravelOption,
     Observation,
     RatingHistogram,
 )
@@ -50,6 +52,8 @@ from stays.search import (
 )
 
 __all__ = [
+    "AmenityFlag",
+    "NearbyTravelOption",
     "ProviderOfferSummary",
     "Observation",
     "Amenity",

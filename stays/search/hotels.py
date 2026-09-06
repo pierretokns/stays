@@ -43,6 +43,10 @@ def _attach_observation(result: HotelResult, filters: HotelSearchFilters, digest
     dates_match = observed_dates == filters.dates if observed_dates and filters.dates else None
     currency_matches = observed_currency == filters.currency.value if observed_currency else None
     warnings = ["occupancy_not_verified", "merchant_availability_not_verified"]
+    if result.amenity_flags:
+        warnings.append("amenity_codes_unmapped")
+    if any(place.mode is None for place in result.nearby):
+        warnings.append("travel_modes_unmapped")
     if isinstance(result, HotelDetail) and not result.rooms:
         warnings.append("no_room_rate_offers_parsed")
     if dates_match is False:

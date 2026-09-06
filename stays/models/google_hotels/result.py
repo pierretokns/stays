@@ -64,16 +64,34 @@ class CategoryRating(BaseModel):
     score: float = Field(..., ge=0.0, le=5.0)
 
 
+class AmenityFlag(BaseModel):
+    """Unmapped response flag; these codes are not the search-filter Amenity IDs."""
+
+    code: int
+    enabled: bool
+    source_path: list[int]
+
+
+class NearbyTravelOption(BaseModel):
+    """One source travel option whose numeric mode code has not been decoded."""
+
+    mode_code: int
+    duration_text: str
+    duration_minutes: int | None = None
+    source_path: list[int | str]
+
+
 class NearbyPlace(BaseModel):
     """A point-of-interest near the hotel with travel-time metadata."""
 
     name: str
-    mode: str = Field(
-        ...,
-        description='"walk", "drive", "transit", "bike" — derived from Google\'s internal mode_id.',
-    )
+    mode: str | None = Field(None, description="Unknown without a verified response-mode mapping.")
+    mode_code: int | None = None
     duration_minutes: int | None = None
+    duration_text: str | None = None
     distance_text: str | None = None
+    travel_options: list[NearbyTravelOption] = Field(default_factory=list)
+    source_path: list[int | str] | None = None
 
 
 class HotelResult(BaseModel):
@@ -119,7 +137,13 @@ class HotelResult(BaseModel):
     check_in_time: str | None = None
     check_out_time: str | None = None
 
-    amenities_available: set[Amenity] = Field(default_factory=set)
+    amenities_available: set[Amenity] = Field(
+        default_factory=set, description="Verified labels only; an empty set does not establish absence of amenities."
+    )
+    amenity_flags: list[AmenityFlag] = Field(
+        default_factory=list,
+        description="Unmapped response codes/flags; a missing label does not establish an amenity's absence.",
+    )
 
     deal_pct: int | None = None
 

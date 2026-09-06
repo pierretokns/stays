@@ -1,14 +1,422 @@
 {
   "address": "790 7th Ave, New York, NY 10019",
-  "amenities_available": [
-    15,
-    40,
-    7,
-    8,
-    11
-  ],
+  "amenities_available": [],
   "amenity_details": [
     "LGBTQ+ friendly"
+  ],
+  "amenity_flags": [
+    {
+      "code": 28,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 162,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 23,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 54,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 25,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 33,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 40,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        3,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 110,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "code": 112,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        3,
+        1,
+        3
+      ]
+    },
+    {
+      "code": 11,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        4,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 116,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        4,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 19,
+      "enabled": false,
+      "source_path": [
+        10,
+        6,
+        0,
+        5,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 10,
+      "enabled": false,
+      "source_path": [
+        10,
+        6,
+        0,
+        5,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 15,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        6,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 27,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        7,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 131,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        7,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 8,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        8,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 104,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        8,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 151,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        8,
+        1,
+        2
+      ]
+    },
+    {
+      "code": 26,
+      "enabled": false,
+      "source_path": [
+        10,
+        6,
+        0,
+        8,
+        1,
+        3
+      ]
+    },
+    {
+      "code": 7,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        9,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 18,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        10,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 87,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        11,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 106,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        11,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 141,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        11,
+        1,
+        2
+      ]
+    },
+    {
+      "code": 147,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        11,
+        1,
+        3
+      ]
+    },
+    {
+      "code": 163,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        12,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 96,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        12,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 135,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        14,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 88,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        14,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 145,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        0,
+        14,
+        1,
+        2
+      ]
+    },
+    {
+      "code": 28,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        1,
+        0
+      ]
+    },
+    {
+      "code": 2,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        1,
+        1
+      ]
+    },
+    {
+      "code": 54,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        1,
+        2
+      ]
+    },
+    {
+      "code": 15,
+      "enabled": true,
+      "source_path": [
+        10,
+        6,
+        1,
+        3
+      ]
+    }
   ],
   "category_ratings": [
     {
@@ -65,58 +473,391 @@
   "name": "The Manhattan at Times Square Hotel",
   "nearby": [
     {
-      "distance_text": "8 min",
+      "distance_text": null,
       "duration_minutes": 8,
-      "mode": "mode_8",
-      "name": "Grand Central Terminal"
+      "duration_text": "8 min",
+      "mode": null,
+      "mode_code": 8,
+      "name": "Grand Central Terminal",
+      "source_path": [
+        2,
+        19,
+        1,
+        1,
+        2,
+        0
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 8,
+          "duration_text": "8 min",
+          "mode_code": 8,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "duration_minutes": 22,
+          "duration_text": "22 min",
+          "mode_code": 2,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            0,
+            2,
+            1
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "10 min",
+      "distance_text": null,
       "duration_minutes": 10,
-      "mode": "mode_8",
-      "name": "33 St"
+      "duration_text": "10 min",
+      "mode": null,
+      "mode_code": 8,
+      "name": "33 St",
+      "source_path": [
+        2,
+        19,
+        1,
+        1,
+        2,
+        1
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 10,
+          "duration_text": "10 min",
+          "mode_code": 8,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "duration_minutes": 24,
+          "duration_text": "24 min",
+          "mode_code": 2,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            1,
+            2,
+            1
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "1 min",
+      "distance_text": null,
       "duration_minutes": 1,
-      "mode": "transit",
-      "name": "7 Av"
+      "duration_text": "1 min",
+      "mode": null,
+      "mode_code": 2,
+      "name": "7 Av",
+      "source_path": [
+        2,
+        19,
+        1,
+        1,
+        2,
+        2
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 1,
+          "duration_text": "1 min",
+          "mode_code": 2,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            2,
+            2,
+            0
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "3 min",
+      "distance_text": null,
       "duration_minutes": 3,
-      "mode": "transit",
-      "name": "50 St"
+      "duration_text": "3 min",
+      "mode": null,
+      "mode_code": 2,
+      "name": "50 St",
+      "source_path": [
+        2,
+        19,
+        1,
+        1,
+        2,
+        3
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 3,
+          "duration_text": "3 min",
+          "mode_code": 2,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            3,
+            2,
+            0
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "3 min",
+      "distance_text": null,
       "duration_minutes": 3,
-      "mode": "transit",
-      "name": "49 St"
+      "duration_text": "3 min",
+      "mode": null,
+      "mode_code": 2,
+      "name": "49 St",
+      "source_path": [
+        2,
+        19,
+        1,
+        1,
+        2,
+        4
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 3,
+          "duration_text": "3 min",
+          "mode_code": 2,
+          "source_path": [
+            2,
+            19,
+            1,
+            1,
+            2,
+            4,
+            2,
+            0
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "42 min",
+      "distance_text": null,
       "duration_minutes": 42,
-      "mode": "walk",
-      "name": "John F. Kennedy International Airport"
+      "duration_text": "42 min",
+      "mode": null,
+      "mode_code": 0,
+      "name": "John F. Kennedy International Airport",
+      "source_path": [
+        2,
+        19,
+        2,
+        1,
+        2,
+        0
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 42,
+          "duration_text": "42 min",
+          "mode_code": 0,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "duration_minutes": 48,
+          "duration_text": "48 min",
+          "mode_code": 3,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            0,
+            2,
+            1
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "32 min",
+      "distance_text": null,
       "duration_minutes": 32,
-      "mode": "walk",
-      "name": "Newark Liberty International Airport"
+      "duration_text": "32 min",
+      "mode": null,
+      "mode_code": 0,
+      "name": "Newark Liberty International Airport",
+      "source_path": [
+        2,
+        19,
+        2,
+        1,
+        2,
+        1
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 32,
+          "duration_text": "32 min",
+          "mode_code": 0,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "duration_minutes": 52,
+          "duration_text": "52 min",
+          "mode_code": 3,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "30 min",
+      "distance_text": null,
       "duration_minutes": 30,
-      "mode": "walk",
-      "name": "LaGuardia Airport"
+      "duration_text": "30 min",
+      "mode": null,
+      "mode_code": 0,
+      "name": "LaGuardia Airport",
+      "source_path": [
+        2,
+        19,
+        2,
+        1,
+        2,
+        2
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 30,
+          "duration_text": "30 min",
+          "mode_code": 0,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            2,
+            2,
+            0
+          ]
+        },
+        {
+          "duration_minutes": 35,
+          "duration_text": "35 min",
+          "mode_code": 3,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            2,
+            2,
+            1
+          ]
+        }
+      ]
     },
     {
-      "distance_text": "48 min",
+      "distance_text": null,
       "duration_minutes": 48,
-      "mode": "walk",
-      "name": "Westchester County Airport"
+      "duration_text": "48 min",
+      "mode": null,
+      "mode_code": 0,
+      "name": "Westchester County Airport",
+      "source_path": [
+        2,
+        19,
+        2,
+        1,
+        2,
+        3
+      ],
+      "travel_options": [
+        {
+          "duration_minutes": 48,
+          "duration_text": "48 min",
+          "mode_code": 0,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            3,
+            2,
+            0
+          ]
+        },
+        {
+          "duration_minutes": 98,
+          "duration_text": "1 hr 38 min",
+          "mode_code": 3,
+          "source_path": [
+            2,
+            19,
+            2,
+            1,
+            2,
+            3,
+            2,
+            1
+          ]
+        }
+      ]
     }
   ],
   "nearby_attractions": [],

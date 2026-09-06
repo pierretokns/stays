@@ -14,13 +14,15 @@ import re
 from datetime import date as _date
 from typing import Any
 
-from stays.models.google_hotels.base import Amenity
 from stays.models.google_hotels.result import (
+    AmenityFlag,
     CategoryRating,
     HotelResult,
     NearbyPlace,
+    NearbyTravelOption,
     RatingHistogram,
 )
+from stays.search.parse.duration_parser import parse_duration_minutes
 from stays.search.parse.slots import (
     SLOT_ENTRY_COORDS,
     SLOT_ENTRY_DISPLAY_PRICE_NUM,
@@ -232,24 +234,21 @@ def _parse_hotel_entry(entry: HotelEntryRaw) -> HotelResult | None:
     # [9] = FID
     fid = at(9) if isinstance(at(9), str) else None
 
-    # [10] = amenities as [[bool, id], ...]
-    amenities: set[Amenity] = set()
+    # Response codes are not request-filter Amenity IDs. Preserve flags without
+    # inventing labels (response code 15, for example, carries parking evidence).
+    amenity_flags: list[AmenityFlag] = []
     pos10 = at(10)
     if isinstance(pos10, list):
 
-        def walk_amenities(n: Any) -> None:
+        def walk_amenities(n: Any, path: list[int]) -> None:
             if isinstance(n, list):
-                if len(n) >= 2 and isinstance(n[0], bool) and isinstance(n[1], int):
-                    if n[0]:
-                        try:
-                            amenities.add(Amenity(n[1]))
-                        except ValueError:
-                            pass
+                if len(n) >= 2 and isinstance(n[0], bool) and type(n[1]) is int:
+                    amenity_flags.append(AmenityFlag(code=n[1], enabled=n[0], source_path=path))
                 else:
-                    for child in n:
-                        walk_amenities(child)
+                    for index, child in enumerate(n):
+                        walk_amenities(child, [*path, index])
 
-        walk_amenities(pos10)
+        walk_amenities(pos10, [10])
 
     # [20] = entity_key (protobuf base64). Same slot carries the KGMID
     # when decoded.
@@ -265,7 +264,7 @@ def _parse_hotel_entry(entry: HotelEntryRaw) -> HotelResult | None:
     nearby_entries: list[NearbyPlace] = []
     if isinstance(pos2, list):
 
-        def visit(node: Any) -> None:
+        def visit(node: Any, path: list[int | str]) -> None:
             nonlocal check_in_time, check_out_time
             if isinstance(node, list):
                 # 5-category rating tuple: [[1-5, "N.N"], ...] with >=3 entries
@@ -305,29 +304,44 @@ def _parse_hotel_entry(entry: HotelEntryRaw) -> HotelResult | None:
                     len(node) >= 3
                     and isinstance(node[0], str)
                     and node[1] is None
-                    and isinstance(mode_id, int)
+                    and type(mode_id) is int
                     and isinstance(dur_str, str)
                 ):
-                    mode_map = {0: "walk", 1: "drive", 2: "transit", 3: "bike"}
-                    mode = mode_map.get(mode_id, f"mode_{mode_id}")
-                    m = re.match(r"(\d+)", dur_str)
-                    duration = int(m.group(1)) if m else None
+                    options = []
+                    for index, raw_option in enumerate(node[2]):
+                        if (
+                            isinstance(raw_option, list)
+                            and len(raw_option) >= 2
+                            and type(raw_option[0]) is int
+                            and isinstance(raw_option[1], str)
+                        ):
+                            options.append(
+                                NearbyTravelOption(
+                                    mode_code=raw_option[0],
+                                    duration_text=raw_option[1],
+                                    duration_minutes=parse_duration_minutes(raw_option[1]),
+                                    source_path=[*path, 2, index],
+                                )
+                            )
                     nearby_entries.append(
                         NearbyPlace(
                             name=node[0],
-                            mode=mode,
-                            duration_minutes=duration,
-                            distance_text=dur_str,
+                            mode_code=mode_id,
+                            duration_minutes=parse_duration_minutes(dur_str),
+                            duration_text=dur_str,
+                            distance_text=node[14] if len(node) > 14 and isinstance(node[14], str) else None,
+                            travel_options=options,
+                            source_path=path,
                         )
                     )
                     return
-                for child in node:
-                    visit(child)
+                for index, child in enumerate(node):
+                    visit(child, [*path, index])
             elif isinstance(node, dict):
-                for v in node.values():
-                    visit(v)
+                for key, value in node.items():
+                    visit(value, [*path, key])
 
-        visit(pos2)
+        visit(pos2, [2])
 
     return HotelResult(
         name=name,
@@ -349,7 +363,7 @@ def _parse_hotel_entry(entry: HotelEntryRaw) -> HotelResult | None:
         category_ratings=category_ratings,
         check_in_time=check_in_time,
         check_out_time=check_out_time,
-        amenities_available=amenities,
+        amenity_flags=amenity_flags,
         nearby=nearby_entries[:20],
         image_urls=image_urls,
     )
