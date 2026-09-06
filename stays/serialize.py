@@ -43,7 +43,9 @@ def serialize_hotel_result(result: HotelResult) -> dict[str, Any]:
         "longitude": result.longitude,
         "display_price": result.display_price,
         "currency": result.currency,
+        "currency_source": result.currency_source,
         "rate_dates": rate_dates,
+        "observation": result.observation.model_dump(mode="json") if result.observation else None,
         "star_class": result.star_class,
         "star_class_label": result.star_class_label,
         "overall_rating": result.overall_rating,
@@ -66,6 +68,9 @@ def _serialize_cancellation(policy: CancellationPolicy) -> dict[str, Any]:
         "kind": policy.kind.value,
         "free_until": policy.free_until.isoformat() if policy.free_until else None,
         "description": policy.description,
+        "deadline_time_text": policy.deadline_time_text,
+        "deadline_timezone": policy.deadline_timezone,
+        "date_inferred": policy.date_inferred,
     }
 
 
@@ -73,11 +78,16 @@ def _serialize_rate_plan(rate: RatePlan) -> dict[str, Any]:
     return {
         "provider": rate.provider,
         "price": rate.price,
+        "price_exact": str(rate.price_exact) if rate.price_exact is not None else None,
+        "total_price": str(rate.total_price) if rate.total_price is not None else None,
+        "price_basis": rate.price_basis,
         "currency": rate.currency,
+        "currency_source": rate.currency_source,
         "cancellation": _serialize_cancellation(rate.cancellation),
         "breakfast_included": rate.breakfast_included,
         "includes_taxes_and_fees": rate.includes_taxes_and_fees,
         "deeplink_url": rate.deeplink_url,
+        "source_path": rate.source_path,
     }
 
 
@@ -87,6 +97,7 @@ def _serialize_room(room: RoomType) -> dict[str, Any]:
         "description": room.description,
         "bed_config": room.bed_config,
         "max_occupancy": room.max_occupancy,
+        "source_path": room.source_path,
         "rates": [_serialize_rate_plan(r) for r in room.rates],
     }
 
@@ -99,6 +110,7 @@ def serialize_hotel_detail(detail: HotelDetail) -> dict[str, Any]:
             "address": detail.address,
             "phone": detail.phone,
             "rooms": [_serialize_room(r) for r in detail.rooms],
+            "provider_summaries": [summary.model_dump(mode="json") for summary in detail.provider_summaries],
             "amenity_details": list(detail.amenity_details or []),
             "nearby_attractions": list(detail.nearby_attractions or []),
             "recent_reviews": [rev.model_dump(mode="json") for rev in (detail.recent_reviews or [])],

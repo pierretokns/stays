@@ -173,36 +173,33 @@ def _parse_hotel_entry(entry: HotelEntryRaw) -> HotelResult | None:
     #   SLOT_ENTRY_PRICE_DATES    entry[6][1][4] → [[Y,M,D], [Y,M,D]]
     #   SLOT_ENTRY_DISPLAY_PRICE_NUM entry[6][2][1][4] → display_num (list-view UI)
     #
-    # Detail-mode responses have SLOT_ENTRY_PRICE_PAIR == None; that acts as
-    # the list-view-only guard — currency / rate_dates / fallback price are
-    # only populated when the pair exists (search mode).
+    # Detail responses can omit the headline price while retaining currency
+    # and observed dates. These are independent response facts.
     display_price = currency = None
     rate_dates: tuple[_date, _date] | None = None
 
     price_pair = safe_get(entry, *SLOT_ENTRY_PRICE_PAIR)
-    if isinstance(price_pair, list):
-        # Currency
-        currency_val = safe_get(entry, *SLOT_ENTRY_PRICE_CURRENCY)
-        if isinstance(currency_val, str):
-            currency = currency_val
+    currency_val = safe_get(entry, *SLOT_ENTRY_PRICE_CURRENCY)
+    if isinstance(currency_val, str) and re.fullmatch(r"[A-Z]{3}", currency_val):
+        currency = currency_val
 
-        # Rate-date window
-        date_block = safe_get(entry, *SLOT_ENTRY_PRICE_DATES)
-        if (
-            isinstance(date_block, list)
-            and len(date_block) >= 2
-            and all(isinstance(d, list) and len(d) == 3 and all(isinstance(x, int) for x in d) for d in date_block[:2])
-        ):
-            try:
-                ci_d = _date(*date_block[0])
-                co_d = _date(*date_block[1])
+    date_block = safe_get(entry, *SLOT_ENTRY_PRICE_DATES)
+    if (
+        isinstance(date_block, list)
+        and len(date_block) >= 2
+        and all(isinstance(d, list) and len(d) == 3 and all(type(x) is int for x in d) for d in date_block[:2])
+    ):
+        try:
+            ci_d = _date(*date_block[0])
+            co_d = _date(*date_block[1])
+            if co_d > ci_d:
                 rate_dates = (ci_d, co_d)
-            except (ValueError, TypeError):
-                pass
+        except (ValueError, TypeError):
+            pass
 
         # Fallback price: SLOT_ENTRY_PRICE_PAIR[0] is the cheapest-rate integer
-        if price_pair and isinstance(price_pair[0], int):
-            display_price = price_pair[0]
+    if isinstance(price_pair, list) and price_pair and type(price_pair[0]) is int:
+        display_price = price_pair[0]
 
     # Primary price: SLOT_ENTRY_DISPLAY_PRICE_NUM wins when present and >0
     display_num = safe_get(entry, *SLOT_ENTRY_DISPLAY_PRICE_NUM)
@@ -342,6 +339,7 @@ def _parse_hotel_entry(entry: HotelEntryRaw) -> HotelResult | None:
         longitude=lng,
         display_price=display_price,
         currency=currency,
+        currency_source="observed" if currency else "unknown",
         rate_dates=rate_dates,
         star_class=star_class,
         star_class_label=star_label,

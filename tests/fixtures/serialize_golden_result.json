@@ -7,6 +7,7 @@
   "check_in_time": "15:00",
   "check_out_time": "11:00",
   "currency": "USD",
+  "currency_source": "unknown",
   "deal_pct": null,
   "display_price": 180,
   "entity_key": "CgoI_TEST_KEY_0001",
@@ -18,6 +19,7 @@
   "longitude": 139.7671,
   "name": "Tokyo Central Hotel",
   "nearby": [],
+  "observation": null,
   "overall_rating": 4.3,
   "rate_dates": {
     "check_in": "2026-07-22",

@@ -5,11 +5,12 @@ from __future__ import annotations
 from typing import Annotated, Any
 
 import typer
+from pydantic import ValidationError
 
 from stays.cli import _render, _runtime, _serialize, _validate
 from stays.cli._console import console
 from stays.cli._enums import OutputFormat
-from stays.models.google_hotels.base import DateRange
+from stays.models.google_hotels.base import Currency, DateRange, GuestInfo
 from stays.search.client import BatchExecuteError, TransientBatchExecuteError
 from stays.search.hotels import MissingHotelIdError, SearchHotels
 
@@ -23,29 +24,48 @@ def details(
     check_in: Annotated[str, typer.Option("--check-in", help="Check-in date YYYY-MM-DD.")],
     check_out: Annotated[str, typer.Option("--check-out", help="Check-out date YYYY-MM-DD.")],
     currency: Annotated[str | None, typer.Option("--currency")] = None,
+    adults: Annotated[int, typer.Option("--adults", min=1, max=12)] = 2,
+    children: Annotated[int, typer.Option("--children", min=0, max=8)] = 0,
+    child_ages: Annotated[list[int] | None, typer.Option("--child-age", min=0, max=17)] = None,
     output_format: Annotated[OutputFormat, typer.Option("--format", case_sensitive=False)] = OutputFormat.TEXT,
 ) -> None:
     """Fetch detailed rooms + rate plans for a single hotel."""
     # --check-in / --check-out are required typer options (no default,
     # keyword-only), so typer exits with code 2 before this function runs
     # when either is missing. No need to re-check for None here.
-    ci = _validate.parse_date(check_in)
-    co = _validate.parse_date(check_out)
-    dates = DateRange(check_in=ci, check_out=co)
-    cur = _validate.parse_currency(currency)  # Currency | None
+    try:
+        ci = _validate.parse_date(check_in)
+        co = _validate.parse_date(check_out)
+        dates = DateRange(check_in=ci, check_out=co)
+        cur = _validate.parse_currency(currency) or Currency.USD
+        guests = GuestInfo(adults=adults, children=children, child_ages=child_ages or [])
+    except (ValueError, ValidationError, typer.BadParameter) as exc:
+        _runtime.emit_error(
+            search_type="details",
+            message=str(exc),
+            error_type="validation_error",
+            query=None,
+            output_format=output_format,
+        )
+        raise typer.Exit(1) from exc
 
     query: dict[str, Any] = {
         "entity_key": entity_key,
         "check_in": ci.isoformat(),
         "check_out": co.isoformat(),
-        "currency": cur.value if cur else None,
+        "currency": cur.value,
+        "adults": adults,
+        "children": children,
+        "child_ages": child_ages or [],
+        "rooms": 1,
     }
 
-    # get_details signature is `currency: Currency = Currency.USD` — passing
-    # None would TypeError the pydantic validator. Only pass when set.
-    get_details_kwargs: dict[str, Any] = {"entity_key": entity_key, "dates": dates}
-    if cur is not None:
-        get_details_kwargs["currency"] = cur
+    get_details_kwargs: dict[str, Any] = {
+        "entity_key": entity_key,
+        "dates": dates,
+        "guests": guests,
+        "currency": cur,
+    }
 
     try:
         detail = SearchHotels().get_details(**get_details_kwargs)

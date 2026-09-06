@@ -10,15 +10,15 @@ from __future__ import annotations
 
 import html
 import re
+from datetime import date
 from typing import Any
 
 from stays.models.google_hotels.detail import (
     HotelDetail,
-    RatePlan,
     Review,
     RoomType,
 )
-from stays.search.parse.provider_parser import _parse_provider_rate
+from stays.search.parse.provider_parser import _parse_provider_rooms, _parse_provider_summary
 from stays.search.parse.search_parser import _find_hotel_entries, _parse_hotel_entry
 from stays.search.parse.slots import (
     SLOT_ADDRESS,
@@ -42,6 +42,8 @@ def parse_detail_response(
     *,
     reference_year: int | None = None,
     requested_currency: str | None = None,
+    requested_check_in: date | None = None,
+    expected_entity_key: str | None = None,
 ) -> HotelDetail:
     """Parse a single-hotel AtySUc detail response into a HotelDetail.
 
@@ -52,21 +54,31 @@ def parse_detail_response(
 
     The hotel entry is found via `_find_hotel_entries` (same heuristic as
     search). In detail mode there's typically only one matching entry; if
-    multiple, take the first.
+    multiple, ``expected_entity_key`` selects the requested property.
 
-    Detail-mode responses omit the list-view price pair that normally carries
-    the ISO currency code. ``requested_currency`` preserves the request context
-    so the hotel and its provider rates are labelled with the currency Google
-    was asked to return.
+    Observed currency and stay dates take precedence over requested context.
+    ``requested_currency`` labels rates only when no observed currency exists;
+    the accompanying currency_source makes that assumption explicit.
     """
     entries = _find_hotel_entries(inner)
     if not entries:
         raise ValueError("parse_detail_response: no hotel entry found in response")
     entry = entries[0]
     base = _parse_hotel_entry(entry)
+    if expected_entity_key is not None:
+        for candidate in entries:
+            parsed = _parse_hotel_entry(candidate)
+            if parsed is not None and parsed.entity_key == expected_entity_key:
+                entry, base = candidate, parsed
+                break
+        else:
+            raise ValueError("parse_detail_response: requested hotel entity was not found in response")
     if base is None:
         raise ValueError("parse_detail_response: hotel entry failed to parse")
     detail_currency = base.currency or requested_currency
+    currency_source = "observed" if base.currency else "requested" if requested_currency else "unknown"
+    # Deadline-year inference uses observed offer dates when available.
+    cutoff_check_in = base.rate_dates[0] if base.rate_dates else requested_check_in
 
     # Address: SLOT_ADDRESS = entry[2][1][0][0][0]
     addr_node = safe_get(entry, *SLOT_ADDRESS)
@@ -80,29 +92,43 @@ def parse_detail_response(
     description_node = safe_get(entry, *SLOT_DESCRIPTION)
     description: str | None = description_node if isinstance(description_node, str) else None
 
-    # Rate plans / rooms from SLOT_PROVIDER_BLOCK (entry[6][2]):
-    #   [6][2][1] = [display_low_str, display_high_str, base_num, null, display_num]
-    #   [6][2][2] = SLOT_PROVIDER_LIST, list of providers
-    # For now, build a SINGLE synthetic RoomType whose rates are the
-    # observed per-provider options. Google's entity-page "rooms" tab
-    # would unpack into multiple RoomType objects if we'd captured that
-    # modal; for this MVP we surface providers as rates.
+    # Keep provider-specific room records and each rate's own policy and link.
+    # An identical label across suppliers is not proof of room equivalence.
     rooms: list[RoomType] = []
     providers_block = safe_get(entry, *SLOT_PROVIDER_BLOCK)
     if isinstance(providers_block, list):
         provider_list_entry = safe_get(entry, *SLOT_PROVIDER_LIST)
-        rates: list[RatePlan] = []
         if isinstance(provider_list_entry, list):
-            for provider_entry in provider_list_entry:
-                rate = _parse_provider_rate(
-                    provider_entry,
-                    detail_currency or "USD",
-                    reference_year=reference_year,
+            for provider_index, provider_entry in enumerate(provider_list_entry):
+                rooms.extend(
+                    _parse_provider_rooms(
+                        provider_entry,
+                        detail_currency,
+                        currency_source=currency_source,
+                        reference_year=reference_year,
+                        requested_check_in=cutoff_check_in,
+                        source_path=[*SLOT_PROVIDER_LIST, provider_index],
+                    )
                 )
-                if rate is not None:
-                    rates.append(rate)
-        if rates:
-            rooms.append(RoomType(name="Standard Room", rates=rates))
+
+    # Newer responses may expose only provider-level price summaries, without
+    # room names or precise rates. Keep these distinct from bookable room rates.
+    provider_summaries = []
+    summary_slot = 21
+    summary_entries = safe_get(providers_block, summary_slot)
+    if not isinstance(summary_entries, list) or not summary_entries:
+        summary_slot = 22
+        summary_entries = safe_get(providers_block, summary_slot)
+    if isinstance(summary_entries, list):
+        for provider_index, provider_entry in enumerate(summary_entries):
+            summary = _parse_provider_summary(
+                provider_entry,
+                detail_currency,
+                currency_source=currency_source,
+                source_path=[*SLOT_PROVIDER_BLOCK, summary_slot, provider_index],
+            )
+            if summary is not None:
+                provider_summaries.append(summary)
 
     # Amenity details: entry[10][0] contains grouped human-readable labels.
     # Other branches contain search-result snippets and business names, so
@@ -121,6 +147,7 @@ def parse_detail_response(
                 recent_reviews.append(rv)
 
     base_data = base.model_dump()
+    base_data["currency_source"] = currency_source
     if detail_currency is not None:
         base_data["currency"] = detail_currency
 
@@ -130,6 +157,7 @@ def parse_detail_response(
         address=address,
         phone=phone,
         rooms=rooms,
+        provider_summaries=provider_summaries,
         amenity_details=amenity_details,
         recent_reviews=recent_reviews,
     )
@@ -165,27 +193,13 @@ def _parse_amenity_details(node: Any) -> list[str]:
 
 
 def _parse_review_entry(entry: Tree) -> Review | None:
-    if not isinstance(entry, list):
-        return None
-    rating: int | None = None
-    body: str | None = None
-    author: str | None = None
+    """Do not turn unrated highlighted excerpts into dated or rated reviews.
 
-    def walk(n: Any) -> None:
-        nonlocal rating, body, author
-        if isinstance(n, int) and 1 <= n <= 5 and rating is None:
-            rating = n
-        elif isinstance(n, str):
-            if len(n) > 40 and body is None:
-                body = n
-            elif 2 <= len(n) <= 40 and author is None and n[0].isupper():
-                author = n
-        elif isinstance(n, list):
-            for x in n:
-                walk(x)
-
-    walk(entry)
-
-    if rating is None or body is None:
-        return None
-    return Review(author_name=author, rating=rating, body=body)
+    The observed entry[7][3] records contain text fragments, emphasis booleans,
+    an avatar image and an author label. They have no review score or date.
+    A recursive integer/string walk incorrectly treated True as a one-star
+    rating and avatar URLs as review text. The Review model requires an actual
+    score, so these snippets are deliberately excluded until a sourced review
+    record with a verified layout is available.
+    """
+    return None

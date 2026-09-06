@@ -124,7 +124,6 @@ _MCP_RESULT_DROP_KEYS: tuple[str, ...] = (
     "google_hotel_id",
     "image_urls",
     "nearby",
-    "rate_dates",
     "rating_histogram",
     "star_class_label",
 )
@@ -161,6 +160,9 @@ def _serialize_rate_plan(rp) -> dict[str, Any]:
     full["cancellation_kind"] = cancellation.get("kind")
     full["cancellation_free_until"] = cancellation.get("free_until")
     full["cancellation_description"] = cancellation.get("description")
+    full["cancellation_deadline_time_text"] = cancellation.get("deadline_time_text")
+    full["cancellation_deadline_timezone"] = cancellation.get("deadline_timezone")
+    full["cancellation_date_inferred"] = cancellation.get("date_inferred")
     return full
 
 
@@ -216,6 +218,7 @@ def _execute_get_hotel_details_from_params(params: GetHotelDetailsParams) -> dic
             entity_key=params.entity_key,
             dates=dates,
             currency=Currency[params.currency],
+            guests=GuestInfo(adults=params.adults, children=params.children, child_ages=params.child_ages or []),
         )
         return {"success": True, "hotel": _serialize_hotel_detail(detail)}
     except MissingHotelIdError as e:

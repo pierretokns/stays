@@ -8,6 +8,8 @@ of the same 48-slot hotel entry that the search-list response uses.
 from __future__ import annotations
 
 from datetime import date
+from decimal import Decimal
+from typing import Literal
 
 from pydantic import BaseModel, Field, PositiveInt
 
@@ -16,27 +18,33 @@ from stays.models.google_hotels.result import HotelResult
 
 
 class RatePlan(BaseModel):
-    """One bookable offer for a RoomType — specific provider + price."""
+    """One provider's observed rate; merchant availability and equivalence are unverified."""
 
     provider: str = Field(..., description='e.g. "Booking.com", "Hotels.com", "Expedia", "Direct (Marriott)"')
-    price: int
-    currency: str
+    price: int | float = Field(ge=0, allow_inf_nan=False)
+    price_exact: Decimal | None = Field(None, ge=0, allow_inf_nan=False)
+    total_price: Decimal | None = Field(None, ge=0, allow_inf_nan=False)
+    price_basis: Literal["per_night", "total_stay", "unknown"] = "unknown"
+    currency: str | None
+    currency_source: Literal["observed", "requested", "unknown"] = "unknown"
     cancellation: CancellationPolicy = Field(default_factory=CancellationPolicy)
-    breakfast_included: bool = False
-    includes_taxes_and_fees: bool = False
+    breakfast_included: bool | None = None
+    includes_taxes_and_fees: bool | None = None
     deeplink_url: str | None = None
+    source_path: list[int] | None = None
 
 
 class RoomType(BaseModel):
-    """One bookable room configuration at a hotel."""
+    """One provider's room label and rate variants; identical labels are not merged."""
 
-    name: str
+    name: str | None
+    source_path: list[int] | None = None
     description: str | None = None
     bed_config: str | None = Field(None, description='e.g. "1 King Bed", "2 Queen Beds"')
     max_occupancy: PositiveInt | None = None
     rates: list[RatePlan] = Field(
         default_factory=list,
-        description="Rate plans for this room, sorted cheapest first.",
+        description="Provider-specific offers sorted within each price basis; room equivalence unverified.",
     )
 
 
@@ -48,6 +56,18 @@ class Review(BaseModel):
     body: str
     review_date: date | None = None
     source: str | None = Field(None, description='e.g. "Google", "Booking.com"')
+
+
+class ProviderOfferSummary(BaseModel):
+    """Supplier display quotes without independently observed room or rate terms."""
+
+    provider: str
+    nightly_price_labels: list[str] = Field(default_factory=list)
+    total_price_labels: list[str] = Field(default_factory=list)
+    currency: str | None = None
+    currency_source: Literal["observed", "requested", "unknown"] = "unknown"
+    deeplink_url: str | None = None
+    source_path: list[int] | None = None
 
 
 class HotelDetail(HotelResult):
@@ -63,6 +83,7 @@ class HotelDetail(HotelResult):
     phone: str | None = None
 
     rooms: list[RoomType] = Field(default_factory=list)
+    provider_summaries: list[ProviderOfferSummary] = Field(default_factory=list)
 
     amenity_details: list[str] = Field(
         default_factory=list,
@@ -71,5 +92,5 @@ class HotelDetail(HotelResult):
     nearby_attractions: list[str] = Field(default_factory=list)
     recent_reviews: list[Review] = Field(
         default_factory=list,
-        description="Small sample (target: top 3) of recent reviews.",
+        description="Only independently parseable reviews; chronology and source coverage are not guaranteed.",
     )

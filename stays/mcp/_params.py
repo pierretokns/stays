@@ -40,8 +40,12 @@ def _validate_child_ages(children: int, child_ages: list[int] | None) -> list[in
 
 class SearchHotelsParams(BaseModel):
     query: str = Field(description="City or property query.")
-    check_in: str | None = Field(default=None, description="YYYY-MM-DD; omit for flexible dates.")
-    check_out: str | None = Field(default=None, description="YYYY-MM-DD; required if check_in is set.")
+    check_in: str | None = Field(
+        default=None, min_length=10, max_length=10, description="YYYY-MM-DD; omit for flexible dates."
+    )
+    check_out: str | None = Field(
+        default=None, min_length=10, max_length=10, description="YYYY-MM-DD; required if check_in is set."
+    )
     adults: int = Field(default=CONFIG.default_adults, ge=1)
     children: int = Field(default=CONFIG.default_children, ge=0, le=8)
     child_ages: list[int] | None = Field(default=None, description="Ages 0-17.")
@@ -62,6 +66,8 @@ class SearchHotelsParams(BaseModel):
     @model_validator(mode="after")
     def _child_ages_matches_children(self):
         _validate_child_ages(self.children, self.child_ages)
+        if (self.check_in is None) != (self.check_out is None):
+            raise ValueError("check_in and check_out must be supplied together")
         return self
 
 
@@ -70,6 +76,14 @@ class GetHotelDetailsParams(BaseModel):
     check_in: str = Field(description="YYYY-MM-DD.")
     check_out: str = Field(description="YYYY-MM-DD after check_in.")
     currency: str = Field(default=CONFIG.default_currency, min_length=3, max_length=3)
+    adults: int = Field(default=CONFIG.default_adults, ge=1, le=12)
+    children: int = Field(default=CONFIG.default_children, ge=0, le=8)
+    child_ages: list[int] | None = None
+
+    @model_validator(mode="after")
+    def _child_ages_matches_children(self):
+        _validate_child_ages(self.children, self.child_ages)
+        return self
 
 
 class SearchHotelsWithDetailsParams(BaseModel):

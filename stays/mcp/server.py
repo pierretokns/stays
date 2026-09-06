@@ -148,7 +148,7 @@ def search_hotels(
     free_cancellation: Annotated[
         bool,
         Field(
-            description="Only show hotels with free cancellation. Use when the user asks for 'refundable', 'flexible booking', 'cancel anytime', or 'free cancellation'."
+            description="Request Google's free-cancellation filter. Verify each offer's policy and deadline separately; this does not mean cancellation is always free."
         ),
     ] = False,
     eco_certified: Annotated[bool, Field(description="Filter to Google eco-certified properties only.")] = False,
@@ -225,18 +225,27 @@ def get_hotel_details(
     check_in: Annotated[str, Field()],
     check_out: Annotated[str, Field()],
     currency: Annotated[str, Field(min_length=3, max_length=3)] = CONFIG.default_currency,
+    adults: Annotated[int, Field(ge=1, le=12)] = CONFIG.default_adults,
+    children: Annotated[int, Field(ge=0, le=8)] = CONFIG.default_children,
+    child_ages: Annotated[list[int] | None, Field(description="One age 0-17 per child.")] = None,
 ) -> dict[str, Any]:
     """Deep detail for ONE hotel. Requires entity_key from search_hotels.
 
-    Returns rooms, per-OTA rate plans with prices, and cancellation
-    policies. One RPC. For multi-hotel deep comparison use
-    search_hotels_with_details instead.
+    Returns provider-specific room labels, rate variants, observed amounts
+    and cancellation evidence. Forward the original party composition.
+    Require observation date/currency matches for comparison. Unknown tax
+    inclusion, occupancy, cutoff timezone and merchant availability must be
+    verified separately; equal room labels do not establish equivalence.
+    One RPC. For multi-hotel comparison use search_hotels_with_details.
     """
     params = GetHotelDetailsParams(
         entity_key=entity_key,
         check_in=check_in,
         check_out=check_out,
         currency=currency,
+        adults=adults,
+        children=children,
+        child_ages=child_ages,
     )
     return _execute_get_hotel_details_from_params(params)
 
