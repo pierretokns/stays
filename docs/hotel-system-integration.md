@@ -97,6 +97,16 @@ for an automatic cancellation deadline.
 
 ## Supported scope and gaps
 
+- Response amenity flags use a different, unverified code namespace from search
+  filters. `amenity_flags` retains code, boolean and source path; an empty
+  `amenities` list means no verified labels, not that facilities are absent.
+  Use explicit hotel evidence before interpreting a code as spa, beach, bar, etc.
+- Nearby `mode` is null until its source code has a verified mapping. Retain
+  `mode_code`, `duration_text` and `travel_options`; `duration_minutes` parses
+  complete hour/minute labels and is null for ambiguous text. `distance_text`
+  contains source distance text only, never a travel-time label. Nearby source
+  paths preserve both array indexes and dictionary keys when present.
+
 - Only one room is supported. `GuestInfo(rooms=2)` fails instead of silently
   pricing one room. Provide an age for every child. Requested exact ages are
   preserved, but the wire uses age buckets and does not verify exact party pricing.

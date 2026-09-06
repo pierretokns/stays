@@ -6,6 +6,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- Preserve unmapped response amenity codes instead of reusing request-filter IDs, which incorrectly produced beach, bar and other facility labels.
+- Retain unmapped nearby travel codes and all observed travel options. Parse complete hour/minute durations, preserve source labels, and keep duration and distance fields separate.
+
 ## [0.2.0] - 2026-09-06
 
 ### Fixed

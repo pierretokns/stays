@@ -1,8 +1,61 @@
 [
   {
-    "amenities_available": [
-      12,
-      11
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 30,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 18,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 54,
+        "enabled": false,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": false,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 12,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -58,28 +111,151 @@
     "name": "31 Street Broadway Hotel",
     "nearby": [
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "transit",
-        "name": "Empire State Building"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Empire State Building",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "3 min",
+        "distance_text": null,
         "duration_minutes": 3,
-        "mode": "transit",
-        "name": "33 St"
+        "duration_text": "3 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "33 St",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 3,
+            "duration_text": "3 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "38 min",
+        "distance_text": null,
         "duration_minutes": 38,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "38 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 38,
+            "duration_text": "38 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 57,
+            "duration_text": "57 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "4 min",
+        "distance_text": null,
         "duration_minutes": 4,
-        "mode": "transit",
-        "name": "Anytime Kitchen"
+        "duration_text": "4 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Anytime Kitchen",
+        "source_path": [
+          2,
+          19,
+          3,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 4,
+            "duration_text": "4 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              3,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -102,8 +278,53 @@
     "star_class_label": "2-star hotel"
   },
   {
-    "amenities_available": [
-      15
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -159,22 +380,118 @@
     "name": "Mayfair Inn and Suites",
     "nearby": [
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "transit",
-        "name": "21 St-Queensbridge"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "21 St-Queensbridge",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "37 min",
+        "distance_text": null,
         "duration_minutes": 37,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "37 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 37,
+            "duration_text": "37 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 57,
+            "duration_text": "57 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "3 min",
+        "distance_text": null,
         "duration_minutes": 3,
-        "mode": "transit",
-        "name": "Mama's"
+        "duration_text": "3 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Mama's",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 3,
+            "duration_text": "3 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -197,8 +514,44 @@
     "star_class_label": "2-star hotel"
   },
   {
-    "amenities_available": [
-      15
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -254,22 +607,118 @@
     "name": "Romana Hotel - NYC",
     "nearby": [
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "transit",
-        "name": "21 St-Queensbridge"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "21 St-Queensbridge",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "37 min",
+        "distance_text": null,
         "duration_minutes": 37,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "37 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 37,
+            "duration_text": "37 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 56,
+            "duration_text": "56 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "Mama's"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Mama's",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -293,6 +742,71 @@
   },
   {
     "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 165,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 18,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": false,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 14,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      }
+    ],
     "category_ratings": [
       {
         "category_id": 4,
@@ -347,28 +861,151 @@
     "name": "Kama Central Park",
     "nearby": [
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "Central Park"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Central Park",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "Central Park West/W 106 St"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Central Park West/W 106 St",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "42 min",
+        "distance_text": null,
         "duration_minutes": 42,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "42 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 42,
+            "duration_text": "42 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 65,
+            "duration_text": "1 hr 5 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "Osteria 106"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Osteria 106",
+        "source_path": [
+          2,
+          19,
+          3,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              3,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -391,8 +1028,53 @@
     "star_class_label": "1-star hotel"
   },
   {
-    "amenities_available": [
-      11
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -448,28 +1130,151 @@
     "name": "Canal Loft Hotel",
     "nearby": [
       {
-        "distance_text": "6 min",
+        "distance_text": null,
         "duration_minutes": 6,
-        "mode": "walk",
-        "name": "Brooklyn Bridge"
+        "duration_text": "6 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "Brooklyn Bridge",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 6,
+            "duration_text": "6 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "transit",
-        "name": "East Broadway"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "East Broadway",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "36 min",
+        "distance_text": null,
         "duration_minutes": 36,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "36 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 36,
+            "duration_text": "36 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 68,
+            "duration_text": "1 hr 8 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "3 min",
+        "distance_text": null,
         "duration_minutes": 3,
-        "mode": "transit",
-        "name": "Mictlan M\u00c3\u00a9xico and Spanish cuisine"
+        "duration_text": "3 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Mictlan M\u00c3\u00a9xico and Spanish cuisine",
+        "source_path": [
+          2,
+          19,
+          3,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 3,
+            "duration_text": "3 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              3,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -493,6 +1298,62 @@
   },
   {
     "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 17,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 54,
+        "enabled": false,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      }
+    ],
     "category_ratings": [
       {
         "category_id": 4,
@@ -547,22 +1408,118 @@
     "name": "Moon Hotel Brooklyn",
     "nearby": [
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "Rockaway Ave/Pitkin Av"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Rockaway Ave/Pitkin Av",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "27 min",
+        "distance_text": null,
         "duration_minutes": 27,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "27 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 27,
+            "duration_text": "27 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 56,
+            "duration_text": "56 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "3 min",
+        "distance_text": null,
         "duration_minutes": 3,
-        "mode": "transit",
-        "name": "Pitkin Seafood"
+        "duration_text": "3 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Pitkin Seafood",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 3,
+            "duration_text": "3 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -585,9 +1542,89 @@
     "star_class_label": null
   },
   {
-    "amenities_available": [
-      15,
-      11
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 54,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 18,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 23,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          7
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          8
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -643,16 +1680,85 @@
     "name": "Feather Factory Hotel Queens NY",
     "nearby": [
       {
-        "distance_text": "31 min",
+        "distance_text": null,
         "duration_minutes": 31,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "31 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 31,
+            "duration_text": "31 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 49,
+            "duration_text": "49 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "mode_8",
-        "name": "Gulp"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 8,
+        "name": "Gulp",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 8,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -675,8 +1781,62 @@
     "star_class_label": "2-star hotel"
   },
   {
-    "amenities_available": [
-      7
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 16,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 7,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -732,22 +1892,118 @@
     "name": "Hotel 369 Brooklyn",
     "nearby": [
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "Pennsylvania Ave/Pitkin Av"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Pennsylvania Ave/Pitkin Av",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "23 min",
+        "distance_text": null,
         "duration_minutes": 23,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "23 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 23,
+            "duration_text": "23 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 41,
+            "duration_text": "41 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "3 min",
+        "distance_text": null,
         "duration_minutes": 3,
-        "mode": "transit",
-        "name": "Los Primos Delicatessen"
+        "duration_text": "3 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Los Primos Delicatessen",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 3,
+            "duration_text": "3 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -770,10 +2026,89 @@
     "star_class_label": null
   },
   {
-    "amenities_available": [
-      19,
-      9,
-      8
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 16,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 19,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 8,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 23,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 9,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          7
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          8
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -829,28 +2164,151 @@
     "name": "West Side YMCA Lodging",
     "nearby": [
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "Central Park"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Central Park",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "4 min",
+        "distance_text": null,
         "duration_minutes": 4,
-        "mode": "transit",
-        "name": "59 St-Columbus Circle"
+        "duration_text": "4 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "59 St-Columbus Circle",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 4,
+            "duration_text": "4 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "47 min",
+        "distance_text": null,
         "duration_minutes": 47,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "47 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 47,
+            "duration_text": "47 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 57,
+            "duration_text": "57 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "The Smith"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "The Smith",
+        "source_path": [
+          2,
+          19,
+          3,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              3,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -873,12 +2331,98 @@
     "star_class_label": null
   },
   {
-    "amenities_available": [
-      6,
-      15,
-      11,
-      7,
-      8
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 6,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 8,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 23,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "code": 7,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          7
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          8
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          9
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -934,22 +2478,118 @@
     "name": "The L Hotel",
     "nearby": [
       {
-        "distance_text": "3 min",
+        "distance_text": null,
         "duration_minutes": 3,
-        "mode": "transit",
-        "name": "3 Av/34 St"
+        "duration_text": "3 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "3 Av/34 St",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 3,
+            "duration_text": "3 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "38 min",
+        "distance_text": null,
         "duration_minutes": 38,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "38 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 38,
+            "duration_text": "38 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 73,
+            "duration_text": "1 hr 13 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "Picazo's Pizza & Restaurant Place Corp"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Picazo's Pizza & Restaurant Place Corp",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -972,8 +2612,53 @@
     "star_class_label": "3-star hotel"
   },
   {
-    "amenities_available": [
-      15
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -1029,22 +2714,118 @@
     "name": "NY Moore Hostel",
     "nearby": [
       {
-        "distance_text": "7 min",
+        "distance_text": null,
         "duration_minutes": 7,
-        "mode": "transit",
-        "name": "Morgan Av"
+        "duration_text": "7 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Morgan Av",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 7,
+            "duration_text": "7 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "37 min",
+        "distance_text": null,
         "duration_minutes": 37,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "37 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 37,
+            "duration_text": "37 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 61,
+            "duration_text": "1 hr 1 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "6 min",
+        "distance_text": null,
         "duration_minutes": 6,
-        "mode": "transit",
-        "name": "Bushniwa"
+        "duration_text": "6 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Bushniwa",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 6,
+            "duration_text": "6 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1067,8 +2848,35 @@
     "star_class_label": "2-star hotel"
   },
   {
-    "amenities_available": [
-      15
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -1124,22 +2932,118 @@
     "name": "Royal Hotel Bronx",
     "nearby": [
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "Boston Rd/Wilson Av"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Boston Rd/Wilson Av",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "36 min",
+        "distance_text": null,
         "duration_minutes": 36,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "36 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 36,
+            "duration_text": "36 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 111,
+            "duration_text": "1 hr 51 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "King Hummingbird Restaurant Inc."
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "King Hummingbird Restaurant Inc.",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1162,8 +3066,71 @@
     "star_class_label": "2-star hotel"
   },
   {
-    "amenities_available": [
-      11
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 16,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 54,
+        "enabled": false,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -1219,22 +3186,118 @@
     "name": "Flushing Hotel",
     "nearby": [
       {
-        "distance_text": "4 min",
+        "distance_text": null,
         "duration_minutes": 4,
-        "mode": "transit",
-        "name": "Flushing-Main St"
+        "duration_text": "4 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Flushing-Main St",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 4,
+            "duration_text": "4 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "22 min",
+        "distance_text": null,
         "duration_minutes": 22,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "22 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 22,
+            "duration_text": "22 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 58,
+            "duration_text": "58 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "DunHuang Lanzhou Beef Noodle"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "DunHuang Lanzhou Beef Noodle",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1258,6 +3321,44 @@
   },
   {
     "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 16,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 18,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      }
+    ],
     "category_ratings": [
       {
         "category_id": 4,
@@ -1312,22 +3413,118 @@
     "name": "Budget Inn",
     "nearby": [
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "transit",
-        "name": "Bayway Ave at Mckinley St"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Bayway Ave at Mckinley St",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "50 min",
+        "distance_text": null,
         "duration_minutes": 50,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "50 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 50,
+            "duration_text": "50 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 103,
+            "duration_text": "1 hr 43 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "6 min",
+        "distance_text": null,
         "duration_minutes": 6,
-        "mode": "transit",
-        "name": "KAI Restaurant & Bar"
+        "duration_text": "6 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "KAI Restaurant & Bar",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 6,
+            "duration_text": "6 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1351,6 +3548,7 @@
   },
   {
     "amenities_available": [],
+    "amenity_flags": [],
     "category_ratings": [
       {
         "category_id": 4,
@@ -1405,22 +3603,118 @@
     "name": "Nova Hotel Bronx",
     "nearby": [
       {
-        "distance_text": "2 min",
+        "distance_text": null,
         "duration_minutes": 2,
-        "mode": "transit",
-        "name": "Brook Ave/Park Av"
+        "duration_text": "2 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Brook Ave/Park Av",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 2,
+            "duration_text": "2 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "39 min",
+        "distance_text": null,
         "duration_minutes": 39,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "39 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 39,
+            "duration_text": "39 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 94,
+            "duration_text": "1 hr 34 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "7 min",
+        "distance_text": null,
         "duration_minutes": 7,
-        "mode": "transit",
-        "name": "Porto Salvo"
+        "duration_text": "7 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Porto Salvo",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 7,
+            "duration_text": "7 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1443,11 +3737,125 @@
     "star_class_label": null
   },
   {
-    "amenities_available": [
-      4,
-      15,
-      11,
-      8
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 165,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 15,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 18,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 8,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 4,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "code": 23,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          7
+        ]
+      },
+      {
+        "code": 24,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          8
+        ]
+      },
+      {
+        "code": 31,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          9
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          10
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          11
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          12
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -1503,28 +3911,151 @@
     "name": "The Tillary Hotel Brooklyn",
     "nearby": [
       {
-        "distance_text": "6 min",
+        "distance_text": null,
         "duration_minutes": 6,
-        "mode": "transit",
-        "name": "Brooklyn Bridge"
+        "duration_text": "6 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Brooklyn Bridge",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 6,
+            "duration_text": "6 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "10 min",
+        "distance_text": null,
         "duration_minutes": 10,
-        "mode": "transit",
-        "name": "Jay St-MetroTech"
+        "duration_text": "10 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Jay St-MetroTech",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 10,
+            "duration_text": "10 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "34 min",
+        "distance_text": null,
         "duration_minutes": 34,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "34 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 34,
+            "duration_text": "34 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 61,
+            "duration_text": "1 hr 1 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "6 min",
+        "distance_text": null,
         "duration_minutes": 6,
-        "mode": "transit",
-        "name": "Brooklyn Bridge Bistro"
+        "duration_text": "6 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Brooklyn Bridge Bistro",
+        "source_path": [
+          2,
+          19,
+          3,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 6,
+            "duration_text": "6 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              3,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1547,8 +4078,80 @@
     "star_class_label": "4-star hotel"
   },
   {
-    "amenities_available": [
-      11
+    "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 54,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 16,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 23,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      },
+      {
+        "code": 11,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          6
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          7
+        ]
+      }
     ],
     "category_ratings": [
       {
@@ -1604,22 +4207,118 @@
     "name": "Phoenix Hotel Brooklyn Sunset Park",
     "nearby": [
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "5 Av/39 St"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "5 Av/39 St",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "39 min",
+        "distance_text": null,
         "duration_minutes": 39,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "39 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 39,
+            "duration_text": "39 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 74,
+            "duration_text": "1 hr 14 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "Eat Street NYC"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Eat Street NYC",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,
@@ -1643,6 +4342,62 @@
   },
   {
     "amenities_available": [],
+    "amenity_flags": [
+      {
+        "code": 29,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 16,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          1
+        ]
+      },
+      {
+        "code": 2,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          2
+        ]
+      },
+      {
+        "code": 54,
+        "enabled": false,
+        "source_path": [
+          10,
+          8,
+          3
+        ]
+      },
+      {
+        "code": 27,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          4
+        ]
+      },
+      {
+        "code": 25,
+        "enabled": true,
+        "source_path": [
+          10,
+          8,
+          5
+        ]
+      }
+    ],
     "category_ratings": [
       {
         "category_id": 4,
@@ -1697,22 +4452,118 @@
     "name": "Cabana Hotel Bronx",
     "nearby": [
       {
-        "distance_text": "1 min",
+        "distance_text": null,
         "duration_minutes": 1,
-        "mode": "transit",
-        "name": "Sedgwick Ave/Depot Pl"
+        "duration_text": "1 min",
+        "mode": null,
+        "mode_code": 2,
+        "name": "Sedgwick Ave/Depot Pl",
+        "source_path": [
+          2,
+          19,
+          0,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 1,
+            "duration_text": "1 min",
+            "mode_code": 2,
+            "source_path": [
+              2,
+              19,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "33 min",
+        "distance_text": null,
         "duration_minutes": 33,
-        "mode": "walk",
-        "name": "John F. Kennedy International Airport"
+        "duration_text": "33 min",
+        "mode": null,
+        "mode_code": 0,
+        "name": "John F. Kennedy International Airport",
+        "source_path": [
+          2,
+          19,
+          1,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 33,
+            "duration_text": "33 min",
+            "mode_code": 0,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "duration_minutes": 90,
+            "duration_text": "1 hr 30 min",
+            "mode_code": 3,
+            "source_path": [
+              2,
+              19,
+              1,
+              1,
+              2,
+              0,
+              2,
+              1
+            ]
+          }
+        ]
       },
       {
-        "distance_text": "5 min",
+        "distance_text": null,
         "duration_minutes": 5,
-        "mode": "mode_8",
-        "name": "Blazin Chicken & Gyro"
+        "duration_text": "5 min",
+        "mode": null,
+        "mode_code": 8,
+        "name": "Blazin Chicken & Gyro",
+        "source_path": [
+          2,
+          19,
+          2,
+          1,
+          2,
+          0
+        ],
+        "travel_options": [
+          {
+            "duration_minutes": 5,
+            "duration_text": "5 min",
+            "mode_code": 8,
+            "source_path": [
+              2,
+              19,
+              2,
+              1,
+              2,
+              0,
+              2,
+              0
+            ]
+          }
+        ]
       }
     ],
     "observation": null,

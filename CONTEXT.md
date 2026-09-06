@@ -68,3 +68,29 @@ independently confirmed; no booking or cancellation occurred.
 - No cache, database migration, paid service, booking or cancellation engine was added.
 
 See `docs/hotel-system-integration.md` for downstream ingestion and eligibility rules.
+
+## Follow-up: unmapped amenities and travel modes
+
+Trip observations for Hotel Xanadu and Platinum Residence exposed two guessed
+response decoders. `search_parser.py` was applying the search-filter `Amenity`
+enum directly to response flag codes, producing unsupported BEACH_ACCESS and
+BAR labels. Response codes are now retained as `amenity_flags` with boolean and
+source path; they are not assigned amenity labels. An empty mapped-amenity set
+does not establish that the hotel lacks amenities. Explicit source-text labels
+in `amenity_details` remain independent evidence.
+
+Nearby travel mode codes likewise had no verified label mapping. `mode` is now
+null and `mode_code` retains the wire value. `duration_text` preserves the label,
+while complete English hour/minute labels are converted to minutes: Xanadu's
+Gatwick `1 hr 9 min` is 69 minutes, not 1. Other travel options, their codes and
+source paths are retained. Duration text is no longer misfiled as distance text.
+Neither these observations nor the decoder fix verifies the actual travel mode
+or a hotel's facilities. The minimized fixture records original source hashes.
+
+Follow-up validation: 60 focused tests passed, then the complete offline suite
+passed 446 tests with 73 live/browser tests skipped (9.95 seconds). Ruff and
+`git diff --check` passed. Strict goldens were regenerated using the explicit
+script and retain raw flags, route vectors and corrected nullable modes. No
+trip database observations were overwritten and no network calls were needed.
+Nearby evidence paths also preserve dictionary keys, covered by a nested-object
+regression so raw source records can be resolved from every emitted path.

@@ -3,6 +3,7 @@
     "POOL",
     "WIFI"
   ],
+  "amenity_flags": [],
   "category_ratings": [],
   "check_in_time": "15:00",
   "check_out_time": "11:00",

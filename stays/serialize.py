@@ -57,6 +57,7 @@ def serialize_hotel_result(result: HotelResult) -> dict[str, Any]:
         "check_in_time": result.check_in_time,
         "check_out_time": result.check_out_time,
         "amenities": _amenities_as_names(result.amenities_available or set()),
+        "amenity_flags": [flag.model_dump(mode="json") for flag in result.amenity_flags],
         "category_ratings": [cr.model_dump(mode="json") for cr in (result.category_ratings or [])],
         "nearby": [n.model_dump(mode="json") for n in (result.nearby or [])],
         "image_urls": list(result.image_urls or []),

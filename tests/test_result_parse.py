@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pytest
 
-from stays import Amenity
 from stays.search.parse import (
     extract_kgmid_from_protobuf,
     parse_search_response,
@@ -65,11 +64,14 @@ def test_at_least_one_hotel_has_rating(parsed_hotels):
     assert len(rated) >= 3
 
 
-def test_at_least_one_hotel_has_amenities(parsed_hotels):
-    with_amen = [h for h in parsed_hotels if h.amenities_available]
+def test_response_amenity_flags_are_preserved_without_filter_enum_guesses(parsed_hotels):
+    from stays.models.google_hotels.result import AmenityFlag
+
+    with_amen = [h for h in parsed_hotels if h.amenity_flags]
     assert len(with_amen) >= 3
     sample = with_amen[0]
-    assert all(isinstance(a, Amenity) for a in sample.amenities_available)
+    assert all(isinstance(flag, AmenityFlag) for flag in sample.amenity_flags)
+    assert all(not hotel.amenities_available for hotel in parsed_hotels)
 
 
 def test_no_duplicate_kgmids(parsed_hotels):
