@@ -9,6 +9,7 @@
   "check_in_time": "15:00",
   "check_out_time": "11:00",
   "currency": "USD",
+  "currency_source": "unknown",
   "deal_pct": null,
   "description": "Sample description",
   "display_price": 180,
@@ -22,8 +23,10 @@
   "name": "Tokyo Central Hotel",
   "nearby": [],
   "nearby_attractions": [],
+  "observation": null,
   "overall_rating": 4.3,
   "phone": "+81-3-0000-0000",
+  "provider_summaries": [],
   "rate_dates": {
     "check_in": "2026-07-22",
     "check_out": "2026-07-26"
@@ -41,17 +44,26 @@
         {
           "breakfast_included": true,
           "cancellation": {
+            "date_inferred": false,
+            "deadline_time_text": null,
+            "deadline_timezone": null,
             "description": "Free cancellation until Jul 20",
             "free_until": "2026-07-20",
             "kind": "free_until"
           },
           "currency": "USD",
+          "currency_source": "unknown",
           "deeplink_url": "https://example.com/room",
           "includes_taxes_and_fees": false,
           "price": 185,
-          "provider": "Booking.com"
+          "price_basis": "unknown",
+          "price_exact": null,
+          "provider": "Booking.com",
+          "source_path": null,
+          "total_price": null
         }
-      ]
+      ],
+      "source_path": null
     }
   ],
   "star_class": 4,

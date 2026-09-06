@@ -31,3 +31,6 @@ class CancellationPolicy(BaseModel):
         description="When kind == FREE_UNTIL_DATE, the last calendar date on which cancellation is free.",
     )
     description: str | None = Field(None, description="Raw label Google displayed, if captured.")
+    deadline_time_text: str | None = None
+    deadline_timezone: str | None = None
+    date_inferred: bool = False

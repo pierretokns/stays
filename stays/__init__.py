@@ -20,6 +20,7 @@ from stays.models.google_hotels import (
 )
 from stays.models.google_hotels.detail import (
     HotelDetail,
+    ProviderOfferSummary,
     RatePlan,
     Review,
     RoomType,
@@ -34,6 +35,7 @@ from stays.models.google_hotels.result import (
     CategoryRating,
     HotelResult,
     NearbyPlace,
+    Observation,
     RatingHistogram,
 )
 
@@ -48,6 +50,8 @@ from stays.search import (
 )
 
 __all__ = [
+    "ProviderOfferSummary",
+    "Observation",
     "Amenity",
     "BatchExecuteError",
     "Brand",

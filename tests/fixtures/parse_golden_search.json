@@ -1,8 +1,8 @@
 [
   {
     "amenities_available": [
-      11,
-      12
+      12,
+      11
     ],
     "category_ratings": [
       {
@@ -34,6 +34,7 @@
     "check_in_time": "4:00\u00e2\u0080\u00afPM",
     "check_out_time": "10:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 42,
     "entity_key": "ChoIxPKIzoX4zIfLARoNL2cvMTFwd2g1N2c1NRAB",
@@ -81,6 +82,7 @@
         "name": "Anytime Kitchen"
       }
     ],
+    "observation": null,
     "overall_rating": 2.6,
     "rate_dates": [
       "2026-04-27",
@@ -133,6 +135,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 68,
     "entity_key": "ChoI07j2vbif2oC7ARoNL2cvMTF4Zng3X253NRAB",
@@ -174,6 +177,7 @@
         "name": "Mama's"
       }
     ],
+    "observation": null,
     "overall_rating": 2.8,
     "rate_dates": [
       "2026-04-27",
@@ -226,6 +230,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 71,
     "entity_key": "ChkIxb6z04zuqOIGGg0vZy8xMXhnZjg5OTY5EAE",
@@ -267,6 +272,7 @@
         "name": "Mama's"
       }
     ],
+    "observation": null,
     "overall_rating": 2.7,
     "rate_dates": [
       "2026-04-27",
@@ -317,6 +323,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "12:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 61,
     "entity_key": "ChkIxID07d3Q-6s7Gg0vZy8xMXRzOW5mMWpwEAE",
@@ -364,6 +371,7 @@
         "name": "Osteria 106"
       }
     ],
+    "observation": null,
     "overall_rating": 4.1,
     "rate_dates": [
       "2026-04-27",
@@ -416,6 +424,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 83,
     "entity_key": "ChoI1cnoyd6s64-RARoNL2cvMTFoY3l4eG01eRAB",
@@ -463,6 +472,7 @@
         "name": "Mictlan M\u00c3\u00a9xico and Spanish cuisine"
       }
     ],
+    "observation": null,
     "overall_rating": 3.3,
     "rate_dates": [
       "2026-04-27",
@@ -513,6 +523,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 78,
     "entity_key": "ChoIiPitzKuOtanmARoNL2cvMTFsNmI2dnloMxAB",
@@ -554,6 +565,7 @@
         "name": "Pitkin Seafood"
       }
     ],
+    "observation": null,
     "overall_rating": 3.5,
     "rate_dates": [
       "2026-04-27",
@@ -574,8 +586,8 @@
   },
   {
     "amenities_available": [
-      11,
-      15
+      15,
+      11
     ],
     "category_ratings": [
       {
@@ -607,6 +619,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "12:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 74,
     "entity_key": "ChkIhI_c9-Kz55kyGg0vZy8xMWZ6dG5zeXQzEAE",
@@ -642,6 +655,7 @@
         "name": "Gulp"
       }
     ],
+    "observation": null,
     "overall_rating": 4.1,
     "rate_dates": [
       "2026-04-27",
@@ -694,6 +708,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 80,
     "entity_key": "ChoIwf3NvOaEy728ARoNL2cvMTFyazh3MjF6ehAB",
@@ -735,6 +750,7 @@
         "name": "Los Primos Delicatessen"
       }
     ],
+    "observation": null,
     "overall_rating": 3.5,
     "rate_dates": [
       "2026-04-27",
@@ -789,6 +805,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 87,
     "entity_key": "ChoIwPrri62I_-HqARoNL2cvMTF3OXFrMWh5bRAB",
@@ -836,6 +853,7 @@
         "name": "The Smith"
       }
     ],
+    "observation": null,
     "overall_rating": 3.1,
     "rate_dates": [
       "2026-04-27",
@@ -856,11 +874,11 @@
   },
   {
     "amenities_available": [
-      11,
       6,
-      8,
       15,
-      7
+      11,
+      7,
+      8
     ],
     "category_ratings": [
       {
@@ -892,6 +910,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 79,
     "entity_key": "ChkIv4OLxdvTl_BXGg0vZy8xMWZqOWQybDdmEAE",
@@ -933,6 +952,7 @@
         "name": "Picazo's Pizza & Restaurant Place Corp"
       }
     ],
+    "observation": null,
     "overall_rating": 3.7,
     "rate_dates": [
       "2026-04-27",
@@ -985,6 +1005,7 @@
     "check_in_time": "11:00\u00e2\u0080\u00afAM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 80,
     "entity_key": "ChgIpsXMgO3Nv6efARoLL2cvMXRma3JwcGYQAQ",
@@ -1026,6 +1047,7 @@
         "name": "Bushniwa"
       }
     ],
+    "observation": null,
     "overall_rating": 4.2,
     "rate_dates": [
       "2026-04-27",
@@ -1078,6 +1100,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 80,
     "entity_key": "ChkIicWosOHE85NSGg0vZy8xMWtodjZjZmd4EAE",
@@ -1119,6 +1142,7 @@
         "name": "King Hummingbird Restaurant Inc."
       }
     ],
+    "observation": null,
     "overall_rating": 2.8,
     "rate_dates": [
       "2026-04-27",
@@ -1171,6 +1195,7 @@
     "check_in_time": "2:00\u00e2\u0080\u00afPM",
     "check_out_time": "12:00\u00e2\u0080\u00afPM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 82,
     "entity_key": "ChcIpMSdmZm1nuRkGgsvZy8xdmpkcV80MBAB",
@@ -1212,6 +1237,7 @@
         "name": "DunHuang Lanzhou Beef Noodle"
       }
     ],
+    "observation": null,
     "overall_rating": 2.8,
     "rate_dates": [
       "2026-04-27",
@@ -1262,6 +1288,7 @@
     "check_in_time": "11:00\u00e2\u0080\u00afAM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 82,
     "entity_key": "ChgIq4HTgY299-WHARoLL2cvMXRkdmwyOTkQAQ",
@@ -1303,6 +1330,7 @@
         "name": "KAI Restaurant & Bar"
       }
     ],
+    "observation": null,
     "overall_rating": 3.3,
     "rate_dates": [
       "2026-04-27",
@@ -1353,6 +1381,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 83,
     "entity_key": "ChoIk_2WgJ3Bmf37ARoNL2cvMTF5ZjJxdjN2ZBAB",
@@ -1394,6 +1423,7 @@
         "name": "Porto Salvo"
       }
     ],
+    "observation": null,
     "overall_rating": 4.1,
     "rate_dates": [
       "2026-04-27",
@@ -1414,9 +1444,9 @@
   },
   {
     "amenities_available": [
-      11,
-      15,
       4,
+      15,
+      11,
       8
     ],
     "category_ratings": [
@@ -1449,6 +1479,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "12:00\u00e2\u0080\u00afPM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 113,
     "entity_key": "ChkIsL6Z-KPh0eJyGg0vZy8xMWJ0djZjbTIxEAE",
@@ -1496,6 +1527,7 @@
         "name": "Brooklyn Bridge Bistro"
       }
     ],
+    "observation": null,
     "overall_rating": 3.7,
     "rate_dates": [
       "2026-04-27",
@@ -1548,6 +1580,7 @@
     "check_in_time": "3:00\u00e2\u0080\u00afPM",
     "check_out_time": "11:00\u00e2\u0080\u00afAM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 85,
     "entity_key": "ChgIyPmA7_Pcs8mrARoLL2cvMXRkX2NseTYQAQ",
@@ -1589,6 +1622,7 @@
         "name": "Eat Street NYC"
       }
     ],
+    "observation": null,
     "overall_rating": 2.7,
     "rate_dates": [
       "2026-04-27",
@@ -1639,6 +1673,7 @@
     "check_in_time": "12:00\u00e2\u0080\u00afAM",
     "check_out_time": "12:00\u00e2\u0080\u00afPM",
     "currency": "USD",
+    "currency_source": "observed",
     "deal_pct": null,
     "display_price": 84,
     "entity_key": "ChoInfbRydaJ5MDfARoNL2cvMTFnZ3Mwc2ZqMhAB",
@@ -1680,6 +1715,7 @@
         "name": "Blazin Chicken & Gyro"
       }
     ],
+    "observation": null,
     "overall_rating": 3.2,
     "rate_dates": [
       "2026-04-27",

@@ -9,15 +9,18 @@ entity_key at outer [2][5].
 
 from __future__ import annotations
 
+import hashlib
+import json
 import logging
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from typing import Literal
 
-from stays.models.google_hotels.base import Currency, DateRange, Location, SortBy
+from stays.models.google_hotels.base import Currency, DateRange, GuestInfo, Location, SortBy
 from stays.models.google_hotels.detail import HotelDetail
 from stays.models.google_hotels.hotels import RPC_ID, HotelSearchFilters
-from stays.models.google_hotels.result import HotelResult
+from stays.models.google_hotels.result import HotelResult, Observation
 from stays.search.client import (
     BatchExecuteError,
     Client,
@@ -29,6 +32,46 @@ from stays.search.parse import parse_detail_response, parse_search_response
 logger = logging.getLogger(__name__)
 
 ErrorKind = Literal["transient", "fatal"]
+
+
+def _attach_observation(result: HotelResult, filters: HotelSearchFilters, digest: str, fetched_at: datetime) -> None:
+    """Keep requested context separate from response evidence, including unknown occupancy."""
+    observed_dates = None
+    if result.rate_dates:
+        observed_dates = DateRange(check_in=result.rate_dates[0], check_out=result.rate_dates[1])
+    observed_currency = result.currency if result.currency_source == "observed" else None
+    dates_match = observed_dates == filters.dates if observed_dates and filters.dates else None
+    currency_matches = observed_currency == filters.currency.value if observed_currency else None
+    warnings = ["occupancy_not_verified", "merchant_availability_not_verified"]
+    if isinstance(result, HotelDetail) and not result.rooms:
+        warnings.append("no_room_rate_offers_parsed")
+    if dates_match is False:
+        warnings.append("date_mismatch")
+    elif dates_match is None:
+        warnings.append("dates_not_verified")
+    if currency_matches is False:
+        warnings.append("currency_mismatch")
+    elif currency_matches is None:
+        warnings.append("currency_not_verified")
+    if filters.guests.children:
+        warnings.append("child_ages_sent_as_buckets")
+    result.observation = Observation(
+        fetched_at=fetched_at,
+        response_sha256=digest,
+        requested_dates=filters.dates,
+        requested_guests=filters.guests.model_copy(deep=True),
+        requested_currency=filters.currency.value,
+        observed_dates=observed_dates,
+        observed_currency=observed_currency,
+        dates_match=dates_match,
+        currency_matches=currency_matches,
+        warnings=warnings,
+    )
+
+
+def _response_digest(response: list) -> str:
+    canonical = json.dumps(response, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def _apply_post_sort(results: list[HotelResult], sort_by: SortBy | None) -> list[HotelResult]:
@@ -131,9 +174,14 @@ class SearchHotels:
         self._detail_concurrency = max(1, detail_concurrency)
 
     def search(self, filters: HotelSearchFilters) -> list[HotelResult]:
+        filters = filters.model_copy(deep=True)
         inner_req = filters.format()
         inner_resp = self._client.post_rpc(RPC_ID, inner_req)
+        fetched_at = datetime.now(timezone.utc)
         results = parse_search_response(inner_resp)
+        digest = _response_digest(inner_resp)
+        for result in results:
+            _attach_observation(result, filters, digest, fetched_at)
         return _apply_post_sort(results, filters.sort_by)
 
     def get_details(
@@ -143,6 +191,7 @@ class SearchHotels:
         *,
         location: Location | None = None,
         currency: Currency = Currency.USD,
+        guests: GuestInfo | None = None,
     ) -> HotelDetail:
         """Fetch full detail for one hotel.
 
@@ -150,39 +199,52 @@ class SearchHotels:
         ``HotelResult.entity_key``. ``dates`` are required because the
         response-side rate plans are computed for the date window.
 
-        ``location`` is optional; Google accepts the detail request
-        without a pinned location. If omitted, a neutral query ("hotels")
-        is used.
+        Detail requests always use the neutral query "hotels". A discovery
+        city query can suppress room-rate blocks even for a valid entity key.
+        ``location`` is retained as a deprecated compatibility argument and
+        ignored; the entity key identifies the property.
 
         Returns a ``HotelDetail`` with rooms, rate plans, cancellation
         policies (when resolvable), description, amenities, reviews.
         """
         if not entity_key or not isinstance(entity_key, str):
             raise MissingHotelIdError(f"get_details: entity_key must be a non-empty str; got {entity_key!r}")
+        dates = DateRange.model_validate(dates.model_dump())
         filters = HotelSearchFilters(
-            location=location or Location(query="hotels"),
+            location=Location(query="hotels"),
             dates=dates,
             currency=currency,
+            guests=(guests or GuestInfo()).model_copy(deep=True),
             entity_key=entity_key,
         )
         inner_req = filters.format()
         inner_resp = self._client.post_rpc(RPC_ID, inner_req)
-        return parse_detail_response(
-            inner_resp,
-            reference_year=dates.check_in.year,
-            requested_currency=currency.value,
-        )
+        fetched_at = datetime.now(timezone.utc)
+        try:
+            detail = parse_detail_response(
+                inner_resp,
+                requested_check_in=dates.check_in,
+                requested_currency=currency.value,
+                expected_entity_key=entity_key,
+            )
+        except ValueError as exc:
+            raise BatchExecuteError(f"Invalid detail response: {exc}") from exc
+        _attach_observation(detail, filters, _response_digest(inner_resp), fetched_at)
+        return detail
 
     def search_with_details(self, filters: HotelSearchFilters, max_hotels: int = 5) -> list[EnrichedResult]:
         """Run ``search()``, then fetch detail for the first
         ``max_hotels`` results in parallel. Partial failures are reported
         per-hotel via ``EnrichedResult.error``; the batch never aborts
         on a single transient."""
+        filters = filters.model_copy(deep=True)
         if filters.dates is None:
             raise ValueError(
                 "search_with_details requires filters.dates so that detail "
                 "responses can carry rate plans. Set dates on your HotelSearchFilters."
             )
+        if not 1 <= max_hotels <= 15:
+            raise ValueError("max_hotels must be between 1 and 15")
         results = self.search(filters)
         top = results[:max_hotels]
         workers = min(self._detail_concurrency, max(1, len(top)))
@@ -205,8 +267,8 @@ class SearchHotels:
                 detail = self.get_details(
                     entity_key=r.entity_key,
                     dates=filters.dates,
-                    location=filters.location,
                     currency=filters.currency,
+                    guests=filters.guests,
                 )
                 return EnrichedResult(result=r, detail=detail)
             except TransientBatchExecuteError as e:

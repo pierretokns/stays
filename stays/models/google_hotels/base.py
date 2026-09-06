@@ -13,7 +13,6 @@ from pydantic import (
     BaseModel,
     Field,
     NonNegativeInt,
-    PositiveInt,
     field_validator,
     model_validator,
 )
@@ -325,24 +324,21 @@ class DateRange(BaseModel):
 class GuestInfo(BaseModel):
     """Who is traveling.
 
-    Google's accepted shape is a list at slot [1][2][1][5]. Our tests show
-    the server accepts a single ``[N]`` (total occupants) and returns valid
-    results; multi-element forms like ``[adults, children]`` are also
-    accepted but their per-field semantics haven't been confirmed to alter
-    pricing/availability. We send the total count as the conservative
-    default and expose per-field inputs so future RE can wire them up.
+    Adults are conveyed through the guests-extras block at [1][1].
+    Requested child ages are retained here but sent as age buckets, not
+    exact ages. Response occupancy is not independently verified.
 
     When ``children > 0``, ``child_ages`` must list one age per child
     (0-17). The extras block at ``[1][1]`` is then emitted using those
     ages; see ``age_to_bucket`` for the age → Google-bucket mapping.
 
-    ``rooms`` is not yet confirmed to map to a specific slot; for now the
-    serializer surfaces it as a stored preference but does not transmit it.
+    ``rooms`` has no verified wire slot; values other than one are rejected
+    instead of silently searching for a different room configuration.
     """
 
-    adults: PositiveInt = 2
-    children: NonNegativeInt = 0
-    rooms: PositiveInt = 1
+    adults: int = Field(default=2, ge=1, le=12)
+    children: int = Field(default=0, ge=0, le=8)
+    rooms: int = Field(default=1, ge=1, le=1, description="Only one room is supported by the verified wire format.")
     child_ages: list[NonNegativeInt] = Field(default_factory=list)
 
     @field_validator("child_ages")
@@ -355,9 +351,8 @@ class GuestInfo(BaseModel):
 
     @model_validator(mode="after")
     def _children_match_ages(self) -> GuestInfo:
-        # Either no ages given (children count may still be set so the total
-        # occupants math works) OR the ages list length must equal children.
-        if self.child_ages and len(self.child_ages) != self.children:
+        # A missing age would omit a child from the wire payload.
+        if len(self.child_ages) != self.children:
             raise ValueError(f"child_ages length ({len(self.child_ages)}) must equal children ({self.children})")
         return self
 

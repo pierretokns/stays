@@ -66,7 +66,7 @@ def test_get_details_builds_payload_with_entity_key_in_slot_2_5():
                 entity_key="ChkIooCAqvyy0fDgARoML2cvMWhoZ18zbWdzEAE",
                 dates=dates,
             )
-        except ValueError:
+        except BatchExecuteError:
             # parse_detail_response raises ValueError when the fixture
             # (a search response) has no single-hotel detail entry — we
             # only care that the payload was built correctly.
@@ -170,13 +170,13 @@ def test_get_details_full_payload_matches_filter_format():
     assert got == expected
 
 
-def test_get_details_full_payload_equality_with_location_and_currency():
+def test_get_details_uses_neutral_query_even_when_discovery_location_is_supplied():
     entity_key = "ChkI_otherhotel"
     dates = DateRange(check_in=date(2026, 12, 20), check_out=date(2026, 12, 23))
     location = Location(query="paris hotels")
     currency = Currency.EUR
     expected = HotelSearchFilters(
-        location=location,
+        location=Location(query="hotels"),
         dates=dates,
         currency=currency,
         entity_key=entity_key,
@@ -189,7 +189,9 @@ def test_get_details_passes_requested_currency_to_detail_parser():
     client = MagicMock()
     inner_response = ["detail-response"]
     client.post_rpc.return_value = inner_response
-    parsed_detail = MagicMock()
+    from stays import HotelDetail
+
+    parsed_detail = HotelDetail(name="Test", entity_key="ChkI_otherhotel")
     search = SearchHotels(client=client)
     dates = DateRange(check_in=date(2026, 12, 20), check_out=date(2026, 12, 23))
 
@@ -203,8 +205,9 @@ def test_get_details_passes_requested_currency_to_detail_parser():
     assert result is parsed_detail
     parse.assert_called_once_with(
         inner_response,
-        reference_year=2026,
+        requested_check_in=date(2026, 12, 20),
         requested_currency="GBP",
+        expected_entity_key="ChkI_otherhotel",
     )
 
 

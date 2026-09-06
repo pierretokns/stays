@@ -12,11 +12,30 @@ Amendment history:
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from stays.models.google_hotels.base import Amenity
+from stays.models.google_hotels.base import Amenity, DateRange, GuestInfo
+
+
+class Observation(BaseModel):
+    """Request context and independently observed response facts, never a booking guarantee."""
+
+    source: str = "google_hotels"
+    rpc_id: str = "AtySUc"
+    fetched_at: datetime
+    response_sha256: str = Field(description="SHA256 of canonical JSON for the decoded RPC response.")
+    requested_dates: DateRange | None = None
+    requested_guests: GuestInfo
+    requested_currency: str
+    observed_dates: DateRange | None = None
+    observed_currency: str | None = None
+    observed_guests: GuestInfo | None = None
+    dates_match: bool | None = None
+    currency_matches: bool | None = None
+    warnings: list[str] = Field(default_factory=list)
 
 
 class RatingHistogram(BaseModel):
@@ -84,6 +103,8 @@ class HotelResult(BaseModel):
 
     display_price: int | None = Field(None, description="Cheapest rate Google surfaced for the selected date window.")
     currency: str | None = None
+    currency_source: Literal["observed", "requested", "unknown"] = "unknown"
+    observation: Observation | None = None
     rate_dates: tuple[date, date] | None = Field(
         None, description="(check_in, check_out) that display_price applies to."
     )

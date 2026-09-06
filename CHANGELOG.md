@@ -6,6 +6,32 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-06
+
+### Fixed
+
+- Preserve observed dates and ISO currency in detail responses even when the headline-price slot is absent. Requested currency no longer replaces an observed different currency.
+- Forward guests through Python, CLI and MCP detail calls and enrichment. Reject unsupported multiroom requests and missing child ages instead of silently changing occupancy.
+- Retain provider-specific room labels and every valid rate variant, including each offer's own URL. Remove the fabricated Standard Room bucket and arbitrary header-integer price fallback.
+- Preserve exact observed nightly and stay amounts; never derive totals by multiplying rounded nightly prices. Tax and breakfast inclusion remain unknown when not established by the response.
+- Reject detail responses for the wrong hotel. Preserve unresolved cancellation dates, raw cutoff time, unknown timezone and explicit year-inference status; handle December-to-January deadlines conservatively.
+- Stop interpreting review avatar URLs and boolean flags as one-star reviews.
+- Use a neutral entity-detail query: forwarding a discovery city query was suppressing detailed room rates in live responses.
+- Render nightly/stay price basis and unverified date/currency context in text output.
+
+### Added
+
+- Observation metadata with requested and observed dates/currency, requested guests, unknown observed occupancy, UTC fetch time and decoded-response SHA256. Mismatches remain visible as warnings and false match flags.
+- MCP observed-date output, exact decimal amount strings, source paths, bounded Python enrichment and strict offline regression fixtures.
+- Separate provider summaries for alternate responses with displayed quotes but no room/rate terms; these never become synthetic room offers.
+
+### Compatibility
+
+- Room names, breakfast and tax fields can be null. There can be many supplier-specific room/rate rows; identical names do not prove room equivalence.
+- `price` is now an observed numeric amount with `price_basis`; `price_exact` and `total_price` are decimal strings in CLI/MCP JSON. Total amounts are not certified tax-inclusive payable totals.
+- Response success denotes acquisition, not confirmed merchant availability or booking/rebooking eligibility. Child ages are retained but the wire still uses age buckets; only one room is supported.
+- `get_details(location=...)` remains accepted for compatibility but is ignored; the entity key selects the hotel and the neutral query retains full rate data.
+
 ## [0.1.1] - 2026-04-23
 
 ### Fixed

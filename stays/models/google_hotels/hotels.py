@@ -132,6 +132,10 @@ class HotelSearchFilters(BaseModel):
 
             [filter_details, None, [], price_slot, (optional) guest_rating]
         """
+        # Models are mutable: revalidate occupancy before sending, including
+        # objects changed after construction with model_copy(update=...).
+        GuestInfo.model_validate(self.guests.model_dump())
+
         # --- [1][2][0] Location slot (3-elem, per docs/reverse-engineering/slot-map.md) ----
         # Shape: [None, [[kgmid, None, None, None, None, fid, display_name]], []]
         # The trailing empty list is a reserved slot observed in every

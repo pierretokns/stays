@@ -38,10 +38,12 @@
         "longitude": 139.7671,
         "display_price": 180,
         "currency": "USD",
+        "currency_source": "unknown",
         "rate_dates": {
           "check_in": "2026-07-22",
           "check_out": "2026-07-26"
         },
+        "observation": null,
         "star_class": 4,
         "star_class_label": "4-star hotel",
         "overall_rating": 4.3,
@@ -68,10 +70,12 @@
         "longitude": 139.7671,
         "display_price": 180,
         "currency": "USD",
+        "currency_source": "unknown",
         "rate_dates": {
           "check_in": "2026-07-22",
           "check_out": "2026-07-26"
         },
+        "observation": null,
         "star_class": 4,
         "star_class_label": "4-star hotel",
         "overall_rating": 4.3,
@@ -96,23 +100,33 @@
             "description": "Non-smoking, city view",
             "bed_config": "1 queen bed",
             "max_occupancy": 2,
+            "source_path": null,
             "rates": [
               {
                 "provider": "Booking.com",
                 "price": 185,
+                "price_exact": null,
+                "total_price": null,
+                "price_basis": "unknown",
                 "currency": "USD",
+                "currency_source": "unknown",
                 "cancellation": {
                   "kind": "free_until",
                   "free_until": "2026-07-20",
-                  "description": "Free cancellation until Jul 20"
+                  "description": "Free cancellation until Jul 20",
+                  "deadline_time_text": null,
+                  "deadline_timezone": null,
+                  "date_inferred": false
                 },
                 "breakfast_included": true,
                 "includes_taxes_and_fees": false,
-                "deeplink_url": "https://example.com/room"
+                "deeplink_url": "https://example.com/room",
+                "source_path": null
               }
             ]
           }
         ],
+        "provider_summaries": [],
         "amenity_details": [],
         "nearby_attractions": [],
         "recent_reviews": []
@@ -133,10 +147,12 @@
         "longitude": 139.7671,
         "display_price": 180,
         "currency": "USD",
+        "currency_source": "unknown",
         "rate_dates": {
           "check_in": "2026-07-22",
           "check_out": "2026-07-26"
         },
+        "observation": null,
         "star_class": 4,
         "star_class_label": "4-star hotel",
         "overall_rating": 4.3,

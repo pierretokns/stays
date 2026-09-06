@@ -55,13 +55,26 @@ def test_rooms_have_rate_plans_with_provider_and_price():
     assert found, "no rate plan had both provider and price"
 
 
-def test_requested_currency_labels_hotel_and_provider_rates():
+def test_observed_currency_overrides_requested_currency_for_hotel_and_rates():
     out = parse_detail_response(_load(), requested_currency="GBP")
 
-    assert out.currency == "GBP"
+    assert out.currency == "USD"
+    assert out.currency_source == "observed"
     rates = [rate for room in out.rooms for rate in room.rates]
     assert rates
-    assert {rate.currency for rate in rates} == {"GBP"}
+    assert {rate.currency for rate in rates} == {"USD"}
+    assert {rate.currency_source for rate in rates} == {"observed"}
+
+
+def test_requested_currency_is_marked_as_unverified_fallback_only():
+    from stays.search.parse.search_parser import _find_hotel_entries
+
+    response = _load()
+    _find_hotel_entries(response)[0][6][1][3] = None
+    out = parse_detail_response(response, requested_currency="GBP")
+    assert out.currency == "GBP"
+    assert out.currency_source == "requested"
+    assert all(rate.currency_source == "requested" for room in out.rooms for rate in room.rates)
 
 
 def test_detail_populates_description_or_phone_or_address():

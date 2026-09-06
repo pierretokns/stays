@@ -18,6 +18,7 @@ from stays.models.google_hotels.base import (
 )
 from stays.models.google_hotels.detail import (
     HotelDetail,
+    ProviderOfferSummary,
     RatePlan,
     Review,
     RoomType,
@@ -31,10 +32,13 @@ from stays.models.google_hotels.result import (
     CategoryRating,
     HotelResult,
     NearbyPlace,
+    Observation,
     RatingHistogram,
 )
 
 __all__ = [
+    "ProviderOfferSummary",
+    "Observation",
     "Amenity",
     "Brand",
     "CancellationPolicy",

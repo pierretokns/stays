@@ -35,10 +35,12 @@
       "longitude": 139.7671,
       "display_price": 180,
       "currency": "USD",
+      "currency_source": "unknown",
       "rate_dates": {
         "check_in": "2026-07-22",
         "check_out": "2026-07-26"
       },
+      "observation": null,
       "star_class": 4,
       "star_class_label": "4-star hotel",
       "overall_rating": 4.3,
@@ -65,10 +67,12 @@
       "longitude": 139.7671,
       "display_price": 240,
       "currency": "USD",
+      "currency_source": "unknown",
       "rate_dates": {
         "check_in": "2026-07-22",
         "check_out": "2026-07-26"
       },
+      "observation": null,
       "star_class": 5,
       "star_class_label": "5-star hotel",
       "overall_rating": 4.7,

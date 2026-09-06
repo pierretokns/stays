@@ -10,11 +10,17 @@ A single Python package that gives you Google Hotels three ways: a **CLI**, an
 All three talk directly to Google's internal `batchexecute` RPC — no HTML
 scraping, no headless browser, no unofficial proxies.
 
+**Hotel-system fork:** see the [integration guide](docs/hotel-system-integration.md)
+for the 0.2.0 offer contract, evidence fields and remaining limitations. Use
+this fork's checkout with `uv sync` to run these changes; the upstream PyPI
+package and container instructions below do not install this fork. Acquisition
+success does not certify a bookable, refundable or tax-inclusive rate.
+
 > 🚀 **Why `stays`?**
 >
 > * **Fast** — direct RPC calls, not page rendering
 > * **Zero scraping** — no HTML parsing, no Playwright/Puppeteer at runtime
-> * **Reliable** — Chrome TLS impersonation via `curl_cffi`, 10 rps rate-limit bucket, tenacity retries
+> * **Bounded transport retries** — `curl_cffi`, a shared rate limiter and tenacity retries; upstream availability can vary
 > * **MCP-native** — three tools, two prompts, one resource; stdio and streamable HTTP
 > * **One install, three surfaces** — `pipx install stays` gets you the CLI, the MCP server, and the library
 
@@ -66,11 +72,11 @@ Prefer a different install path? See [Install](#install) below.
 ## Features
 
 - 🔍 **List-view search** — 16 filter slots: city / brand / stars / price range / amenities / dates / guests / cancellation / eco / special offers / sort.
-- 🏨 **Deep hotel detail** — rooms, per-OTA rate plans (Booking, Expedia, Hotels.com, Trip.com, direct), cancellation policies, deep-link URLs.
+- 🏨 **Hotel detail** — observed room/rate alternatives and cancellation policies, or separate provider price summaries when Google omits room-level terms; source links and provenance are retained.
 - ⚡ **Parallel enrichment** — search + fan-out detail fetch for the top N hotels in a single call, with per-hotel partial failure.
 - 🤖 **MCP server** — FastMCP over stdio (what Claude/Codex spawn) or streamable HTTP (dev / Docker).
 - 🧰 **Three-format CLI** — `text` (rich tables), `json` (single envelope), `jsonl` (stream-friendly).
-- 🛡️ **Production hygiene** — rate-limited `curl_cffi` session with Chrome TLS impersonation, tenacity exponential backoff, typed pydantic v2 models, 330 offline tests.
+- 🛡️ **Production hygiene** — rate-limited `curl_cffi` session, tenacity exponential backoff, typed pydantic v2 models and offline regression tests.
 - 🐳 **Ready for containers** — published multi-arch image at `ghcr.io/him229/stays:latest`, plus `docker-compose` profiles.
 
 ## Install
@@ -154,15 +160,20 @@ stays search "tokyo" --format jsonl   # one record per line, stream-friendly
 | `--amenity` | enum (repeat) | `POOL`, `WIFI`, `SPA`, `PET_FRIENDLY`, … |
 | `--brand` | enum (repeat) | `HILTON`, `MARRIOTT`, `HYATT`, … |
 | `--price-min` / `--price-max` | int | Price band (selected currency) |
-| `--free-cancellation` | flag | Refundable-only |
+| `--free-cancellation` | flag | Request Google's cancellation filter; verify each offer's policy |
 | `--eco-certified` | flag | Eco-certified only |
 | `--special-offers` | flag | Deals only |
 | `--max-results` | int | `search` only — cap (1–25) |
 | `--max-hotels` | int | `enrich` only — cap (1–15, default 5) |
 | `--format` | enum | `text` (rich tables, default), `json`, `jsonl` |
 
-> `--format json` / `--format jsonl` envelope shapes are stable for v0.1.x
-> but may evolve in minor releases.
+`details` also accepts `--adults`, `--children` and repeated `--child-age`.
+Only one room is supported; provide an age for every child.
+
+The 0.2.0 output preserves source room/rate alternatives, nullable offer facts,
+decimal-string amounts and requested versus observed context. Read the
+[migration notes](docs/hotel-system-integration.md#migrating-consumers-from-01x)
+before updating a consumer of the 0.1.x JSON or JSONL output.
 
 ## MCP Clients
 
@@ -247,7 +258,7 @@ The server exposes three tools. All of them return JSON-safe dicts.
 |------|-------------|----------|
 | **`search_hotels`** | List-view discovery: browse / filter by city, stars, amenities, price, brand. Start here. | 1 |
 | **`get_hotel_details`** | One hotel: rooms, per-OTA rates, cancellation. Needs an `entity_key` from `search_hotels`. | 1 |
-| **`search_hotels_with_details`** | Compare 3–15 hotels' rooms/rates/cancellation in a single call. | 1 + N |
+| **`search_hotels_with_details`** | Compare 1–15 hotels' rooms/rates/cancellation in a single call. | 1 + N |
 
 ### `search_hotels` parameters
 
@@ -263,7 +274,7 @@ The server exposes three tools. All of them return JSON-safe dicts.
 | `min_guest_rating` | enum | `THREE_FIVE_PLUS`, `FOUR_ZERO_PLUS`, `FOUR_FIVE_PLUS` |
 | `amenities` | list[string] | `POOL`, `WIFI`, `SPA`, `PET_FRIENDLY`, … |
 | `brands` | list[string] | `HILTON`, `MARRIOTT`, `HYATT`, `IHG`, `ACCOR`, … |
-| `free_cancellation` | bool | Refundable-only |
+| `free_cancellation` | bool | Request Google's cancellation filter; verify each offer's policy |
 | `eco_certified` | bool | Eco-certified only |
 | `special_offers` | bool | Deals only |
 | `price_min` / `price_max` | int | Price band (selected currency) |
@@ -277,6 +288,7 @@ The server exposes three tools. All of them return JSON-safe dicts.
 | `check_in` *required* | string | `YYYY-MM-DD` (rate plans are date-keyed) |
 | `check_out` *required* | string | `YYYY-MM-DD` after `check_in` |
 | `currency` | string | ISO 4217 (default `USD`) |
+| `adults` / `children` / `child_ages` | int / int / list[int] | Same party as the search; supply one age per child |
 
 ### `search_hotels_with_details` parameters
 
